@@ -1,0 +1,75 @@
+name: l3ls
+
+topology:
+
+  defaults:
+    kind: ceos
+
+  kinds:
+    ceos:
+      image: ceos:4.33.2F
+
+  nodes:
+    s1:
+    s2:
+    s3:
+    s4:
+
+    l1:
+    l2:
+    l3:
+    l4:
+
+    b1:
+    b2:
+
+    h1:
+    h2:
+
+  links:
+    # Spine - Leaf
+    - endpoints: ["s1:eth2", "l1:eth2"]
+    - endpoints: ["s1:eth3", "l2:eth2"]
+    - endpoints: ["s1:eth4", "l3:eth2"]
+    - endpoints: ["s1:eth5", "l4:eth2"]
+    - endpoints: ["s1:eth6", "b1:eth2"]
+    - endpoints: ["s1:eth7", "b2:eth2"]
+
+    - endpoints: ["s2:eth2", "l1:eth3"]
+    - endpoints: ["s2:eth3", "l2:eth3"]
+    - endpoints: ["s2:eth4", "l3:eth3"]
+    - endpoints: ["s2:eth5", "l4:eth3"]
+    - endpoints: ["s2:eth6", "b1:eth3"]
+    - endpoints: ["s2:eth7", "b2:eth3"]
+
+    - endpoints: ["s3:eth2", "l1:eth4"]
+    - endpoints: ["s3:eth3", "l2:eth4"]
+    - endpoints: ["s3:eth4", "l3:eth4"]
+    - endpoints: ["s3:eth5", "l4:eth4"]
+    - endpoints: ["s3:eth6", "b1:eth4"]
+    - endpoints: ["s3:eth7", "b2:eth4"]
+
+    - endpoints: ["s4:eth2", "l1:eth5"]
+    - endpoints: ["s4:eth3", "l2:eth5"]
+    - endpoints: ["s4:eth4", "l3:eth5"]
+    - endpoints: ["s4:eth5", "l4:eth5"]
+    - endpoints: ["s4:eth6", "b1:eth5"]
+    - endpoints: ["s4:eth7", "b2:eth5"]
+
+    # Leaf MLAG
+    - endpoints: ["l1:eth6", "l2:eth6"]
+    - endpoints: ["l1:eth7", "l2:eth7"]
+
+    # Host MLAG
+    - endpoints: ["l1:eth8", "h1:eth2"]
+    - endpoints: ["l1:eth9", "h2:eth2"]
+
+    - endpoints: ["l2:eth8", "h1:eth3"]
+    - endpoints: ["l2:eth9", "h2:eth3"]
+
+    # Border Leaf MLAG
+    - endpoints: ["b1:eth6", "b2:eth6"]
+    - endpoints: ["b1:eth7", "b2:eth7"]
+
+
+
