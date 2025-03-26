@@ -11,20 +11,32 @@ topology:
 
   nodes:
     s1:
+      group: spines
     s2:
+      group: spines
     s3:
+      group: spines
     s4:
+      group: spines
 
     l1:
+      group: leaves
     l2:
+      group: leaves
     l3:
+      group: leaves
     l4:
+      group: leaves
 
     b1:
+      group: border_leaves
     b2:
+      group: border_leaves
 
     h1:
+      group: clients
     h2:
+      group: clients
 
   links:
     # Spine - Leaf

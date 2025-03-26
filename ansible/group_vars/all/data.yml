@@ -1,0 +1,9 @@
+ansible_python_interpreter: $(which python)
+save_dir: "{{playbook_dir}}/outputs"
+domain_name: "lab.local"
+
+ansible_user: 'admin'
+ansible_password: 'admin'
+ansible_network_os: eos
+ansible_become: yes
+ansible_become_method: enable
